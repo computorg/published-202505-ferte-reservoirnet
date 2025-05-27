@@ -16,3 +16,4 @@ renv/
 published-202505-ferte-reservoirnet.pdf
 published-202505-ferte-reservoirnet.html
 /.luarc.json
+*.Rproj
