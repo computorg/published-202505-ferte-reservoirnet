@@ -1,2 +1,2 @@
-pip install reservoirpy
+Rscript -e 'reservoirnet::install_reservoirpy()'
 
