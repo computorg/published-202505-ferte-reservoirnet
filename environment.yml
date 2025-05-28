@@ -2,7 +2,7 @@ name: computo-quarto-extension
 channels:
   - conda-forge
 dependencies:
-  - python=3.12
+  - python=3.13
   - openssl
   - pip:
     - -r requirements.txt
