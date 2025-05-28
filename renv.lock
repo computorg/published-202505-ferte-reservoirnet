@@ -8,11 +8,6 @@
       }
     ]
   },
-  "Python": {
-    "Version": "3.8.16",
-    "Type": "virtualenv",
-    "Name": "/home/jchiquet/.virtualenvs/r-reticulate"
-  },
   "Packages": {
     "Deriv": {
       "Package": "Deriv",
