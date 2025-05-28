@@ -1,0 +1,7 @@
+name: computo-quarto-extension
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip:
+    - -r requirements.txt
