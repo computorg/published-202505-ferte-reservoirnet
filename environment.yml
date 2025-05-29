@@ -2,7 +2,20 @@ name: computo-quarto-extension
 channels:
   - conda-forge
 dependencies:
-  - python=3.13
+  - python=3.11
   - openssl
+  - numpy
+  - pandas
+  - scipy
+  - dill
+  - joblib
+  - tqdm
+  - tenacity
+  - plotly
+  - python-dateutil
+  - six
+  - tzdata
+  - pytz
+  - packaging
   - pip:
-    - -r requirements.txt
+    - reservoirpy
