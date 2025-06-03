@@ -543,11 +543,11 @@ dfOutcome %>%
 This example is largely inspired from the [classification tutorial of reservoirpy](https://github.com/reservoirpy/reservoirpy/blob/master/tutorials/5-Classification-with-RC.ipynb). To illustrate the classification task, we will use the Japanese vowel dataset (@kudo_multidimensional_1999). The data can be loaded from `reservoirnet` as follow :
 
 ```{r}
-# Get the Japanese vowels dataset using the 'generate_data' function from the
-# reservoirnet package.
+# Get the Japanese vowels dataset from the local data file
+# (precomputed to avoid network issues in CI environments)
 # The dataset contains preprocessed features and labels for classification.
 # Then we isolate train and test sets
-japanese_vowels <- reservoirnet::generate_data(dataset = "japanese_vowels")[[1]]
+japanese_vowels <- readRDS("data/japanese_vowels.rds")
 X_train <- japanese_vowels$X_train
 Y_train <- japanese_vowels$Y_train
 X_test <- japanese_vowels$X_test
@@ -734,9 +734,9 @@ For this task, the goal is to predict the speaker for each time step of each utt
 # For this new task where we want to forecast for each time step (instead of each utterance)
 # we start by getting the data in the appropriate format
 # Then we split the train and test data
-japanese_vowels <- reservoirnet::generate_data(
-    dataset = "japanese_vowels",
-    repeat_targets=TRUE)$japanese_vowels
+# Using precomputed dataset to avoid network issues in CI environments
+japanese_vowels_repeat <- readRDS("data/japanese_vowels_repeat.rds")
+japanese_vowels <- japanese_vowels_repeat$japanese_vowels
 X_train <- japanese_vowels$X_train
 Y_train <- japanese_vowels$Y_train
 X_test <- japanese_vowels$X_test
