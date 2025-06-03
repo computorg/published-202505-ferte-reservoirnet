@@ -623,26 +623,52 @@ readout <- reservoirnet::createNode("Ridge",ridge=1e-6)
 # size of the coefficients.
 ```
 
-To perform this task, we need to modify the training and testing processes. Leveraging the inherent inertia of the reservoir, information from preceding time steps is preserved, effectively endowing the RC with a form of memory. Consequently, the final state vector encapsulates insights gathered from all antecedent states. In the context of the sequence-to-vector encoding task, only the final state is used. To simplify this process, we introduce the `last_reservoir_state()` function, which extracts the final reservoir state. This process is executed as follows:
+To perform this task, we need to modify the training and testing processes. Leveraging the inherent inertia of the reservoir, information from preceding time steps is preserved, effectively endowing the RC with a form of memory. Consequently, the final state vector encapsulates insights gathered from all antecedent states. In the context of the sequence-to-vector encoding task, only the final state is used. To simplify this process, we create a custom function to extract the final reservoir state. This process is executed as follows:
 
 ```{r}
-states_train <- reservoirnet::last_reservoir_state(node = reservoir, X = X_train)
+# Custom function to extract the last reservoir state from each sequence
+last_reservoir_state <- function(node, X) {
+  # Handle list of sequences (like Japanese vowel dataset)
+  if (is.list(X)) {
+    # Process each sequence individually and extract the last state
+    last_states <- lapply(X, function(seq) {
+      # Get reservoir states for this sequence
+      states <- reservoirnet::predict_seq(node = node, X = seq)
+      # Return the last row (final state)
+      return(states[nrow(states), , drop = FALSE])
+    })
+    
+    # Combine all last states into a matrix
+    # Each row is the final state of one sequence
+    return(do.call(rbind, last_states))
+  } else {
+    # Handle single sequence (matrix)
+    all_states <- reservoirnet::predict_seq(node = node, X = X)
+    # Return the last row (last timestep)
+    return(all_states[nrow(all_states), , drop = FALSE])
+  }
+}
+
+states_train <- last_reservoir_state(node = reservoir, X = X_train)
 ```
 
-Then, we use only the final state for prediction. We first extract the final state using the `last_reservoir_state()` function and then use the trained readout to predict the vowel using the `predict_seq()` function with the `seq_to_vec` parameter set to `TRUE`:
+Then, we use only the final state for prediction. We first extract the final state using our custom `last_reservoir_state()` function and then use the trained readout to predict the vowel using the `predict_seq()` function:
 
 ```{r results='hide'}
+# Convert Y_train from list of one-hot vectors to matrix format
+Y_train_matrix <- do.call(rbind, Y_train)
+
 # Fit the reservoir using the last state vector (each observation is the whole
 # vowel sequence)
-res <- reservoirnet::reservoirR_fit(node = readout, X = states_train, Y = Y_train)
+res <- reservoirnet::reservoirR_fit(node = readout, X = states_train, Y = Y_train_matrix)
 ```
 
-Then we can perform the prediction using only the final state. We first get the final state using the `last_reservoir_state()` function and use the trained readout to predict the vowel using the `predict_seq()` function with the `seq_to_vec` parameter set to `TRUE`.
+Then we can perform the prediction using only the final state. We first get the final state using our custom `last_reservoir_state()` function and use the trained readout to predict the vowel using the `predict_seq()` function.
 
 ```{r}
 # The operation is repeated for the test set :
-states_test <- reservoirnet::last_reservoir_state(node = reservoir, X = X_test)
-Y_pred <- reservoirnet::predict_seq(node = readout, X = states_test, seq_to_vec = TRUE)
+states_test <- last_reservoir_state(node = reservoir, X = X_test)
+Y_pred <- reservoirnet::predict_seq(node = readout, X = states_test)
 
 ```
 
