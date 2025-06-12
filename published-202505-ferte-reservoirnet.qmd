@@ -7,7 +7,7 @@ author:
     orcid: 0000-0001-8455-4665
     affiliations:
       - name: Inserm, Inria
-        department: Inserm Bordeaux Population Health Research Center UMR 1219, Inria BSO, team SISTM, F-33000 Bordeaux, France
+        department: Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000 Bordeaux, France
       - name: CHU de Bordeaux
         department: "Bordeaux Hospital University Center, Pôle de santé publique, Service d'information médicale, F-33000 Bordeaux, France"
   - name: Kalidou Ba
@@ -15,20 +15,22 @@ author:
     orcid: 0000-0001-6552-265X
     affiliations:
       - name: Inserm, Inria
-        department: Inserm Bordeaux Population Health Research Center UMR 1219, Inria BSO, team SISTM, F-33000 Bordeaux, France
+        department: Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000 Bordeaux, France
   - name: Dan Dutartre
     corresponding: false
     orcid: 0000-0001-8210-461X
     affiliations:
       - name: Inria
-        department: Inria BSO
+        department: INRIA, F-33000 Bordeaux, France
   - name: Pierrick Legrand
     corresponding: false
     affiliations:
+      - name: Bordeaux INP
+        department: ENSC, 109 avenue Roul, 33400, Talence France
       - name: Inria
-        department: Inria BSO, F-33000 Bordeaux, France
-      - name: IMB
-        department: IMB, Institut de Mathématiques de Bordeaux, UMR CNRS 5251
+        department: INRIA, F-33000 Bordeaux, France
+      - name: IMS
+        department: IMS, UMR CNRS 5218
   - name: Vianney Jouhet
     corresponding: false
     orcid: 0000-0001-5272-2265
@@ -42,7 +44,7 @@ author:
     orcid: 0000-0002-5235-3962
     affiliations:
       - name: Inserm, Inria
-        department: Inserm Bordeaux Population Health Research Center UMR 1219, Inria BSO, team SISTM, F-33000 Bordeaux, France
+        department: Univ. Bordeaux, INSERM, INRIA, BPH, U1219, F-33000 Bordeaux, France
       - name: CHU de Bordeaux
         department: "Bordeaux Hospital University Center, Pôle de santé publique, Service d'information médicale, F-33000 Bordeaux, France"
   - name: Xavier Hinaut
@@ -50,18 +52,18 @@ author:
     orcid: 0000-0002-1924-1184
     affiliations:
       - name: Inria
-        department: Inria BSO, F-33000 Bordeaux, France
+        department: INRIA, F-33000 Bordeaux, France
       - name: IMN
         department: Univ. Bordeaux, CNRS, IMN, UMR 5293, Bordeaux, France
       - name: LaBRI
         department: LaBRI, Univ. Bordeaux, Bordeaux INP, CNRS UMR 5800.
-  - name: Boris Hejblum
+  - name: Boris P Hejblum
     email: boris.hejblum@u-bordeaux.fr
     corresponding: true
     orcid: 0000-0003-0646-452X
     affiliations:
       - name: Inserm, Inria
-        department: Inserm Bordeaux Population Health Research Center UMR 1219, Inria BSO, team SISTM, F-33000 Bordeaux, France
+        department: Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000 Bordeaux, France
 date: last-modified
 date-modified: last-modified
 abstract: >+
