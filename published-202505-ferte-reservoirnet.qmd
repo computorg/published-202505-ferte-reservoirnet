@@ -136,7 +136,7 @@ $$
 X = \begin{bmatrix} x(1) \\ x(2) \\ ... \\ x(T) \end{bmatrix}
 \text{ and } Y = \begin{bmatrix} y(1) \\ y(2) \\ ... \\ y(T) \end{bmatrix}.
 $$
-The parameter $\lambda$ is the ridge penalization which aims to prevent overfitting. Additionally, one can also connect the input layer to the output layer to the reservoir nodes. In that case, $X$ is the accumulation of both such that :
+The parameter $\lambda$ is the ridge penalization which aims to prevent overfitting. Additionally, one can also connect the input layer to the output layer to the reservoir nodes. In that case, $X$ is the accumulation of both such that:
 $$X = \begin{bmatrix} x(1), u(1) \\ x(2), u(2) \\ ... \\ x(T), u(T) \end{bmatrix}
 \text{ and } Y = \begin{bmatrix} y(1) \\ y(2) \\ ... \\ y(T) \end{bmatrix}.$$
 
@@ -270,13 +270,13 @@ knitr::include_graphics("images/regression_usecase.PNG")
 
 The objective of this task is to train a RC model using the input features to forecast the number of hospitalized patients 14 days ahead, as illustrated in Figure @fig-schemaregression.
 
-Setting a reservoir is done with the `createNode()` function. The important hyperparameters are the following :
+Setting a reservoir is done with the `createNode()` function. The important hyperparameters are the following:
 
--   Number of nodes (`units`) : it corresponds to the number of nodes inside the reservoir. Usually, the more the better, but more nodes increases the computation time.
--   Leaking rate (`lr`) : the leaking rate corresponds to the balance between the new inputs and the previous state. A leaking rate of 1 only consider information from new inputs.
+-   Number of nodes (`units`): it corresponds to the number of nodes inside the reservoir. Usually, the more the better, but more nodes increases the computation time.
+-   Leaking rate (`lr`): the leaking rate corresponds to the balance between the new inputs and the previous state. A leaking rate of 1 only consider information from new inputs.
 -   Spectral radius (`sr`): the spectral radius is the largest eigenvalue in modulus of the reservoir connectivity matrix. A small spectral radius induces stable dynamics inside the reservoir, a high spectral radius induces a chaotic regime inside the reservoir.
 -   Input scaling (`input_scaling`): the input scaling is a gain applied to the input features of the reservoir.
--   Warmup (`warmup`) : it corresponds to the number of time step during which the data are propagating into the reservoir but not used to fit the output layer. This hyperparameter is set in the `reservoirR_fit()` function.
+-   Warmup (`warmup`): it corresponds to the number of time step during which the data are propagating into the reservoir but not used to fit the output layer. This hyperparameter is set in the `reservoirR_fit()` function.
 
 In addition, we can set the seed (`seed`). Because the reservoir connections are set at random, setting the seed is a good approach to ensure reproducibility.
 
@@ -542,7 +542,14 @@ dfOutcome %>%
 
 ### The Japanese vowel dataset
 
-This example is largely inspired from the [classification tutorial of reservoirpy](https://github.com/reservoirpy/reservoirpy/blob/master/tutorials/5-Classification-with-RC.ipynb). To illustrate the classification task, we will use the Japanese vowel dataset (@kudo_multidimensional_1999). The data can be loaded from `reservoirnet` as follow :
+This example is largely inspired from the [classification tutorial of reservoirpy](https://github.com/reservoirpy/reservoirpy/blob/master/tutorials/5-Classification-with-RC.ipynb). To illustrate the classification task, we will use the Japanese vowel dataset (@kudo_multidimensional_1999). The data can be loaded from `reservoirnet` as follow
+
+```{r}
+#| eval: false
+japanese_vowels <- reservoirnet::generate_data(dataset = "japanese_vowels")[[1]]
+```
+
+For convenience, the data are also available in the `data` folder:
 
 ```{r}
 # Get the Japanese vowels dataset from the local data file
@@ -642,7 +649,7 @@ res <- reservoirnet::reservoirR_fit(node = readout, X = states_train, Y = Y_trai
 Then we can perform the prediction using only the final state. We first get the final state using the `last_reservoir_state()` function and use the trained readout to predict the vowel using the `predict_seq()` function with the `seq_to_vec` parameter set to `TRUE`.
 
 ```{r}
-# The operation is repeated for the test set :
+# The operation is repeated for the test set:
 states_test <- reservoirnet::last_reservoir_state(node = reservoir, X = X_test)
 Y_pred <- reservoirnet::predict_seq(node = readout, X = states_test, seq_to_vec = TRUE)
 
@@ -686,7 +693,7 @@ ggplot(dfplotseqtovec,
        x = "Speaker")
 ```
 
-Then, we can also compute the overall accuracy :
+Then, we can also compute the overall accuracy:
 
 ```{r}
 # The overall accuracy is evaluated
@@ -704,7 +711,7 @@ print(paste0("Accuracy: ", round(score * 100,3) ,"%"))
 
 ### Transduction (sequence-to-sequence model)
 
-For this task, the goal is to predict the speaker for each time step of each utterance. The first step is to get the data where the label is repeated for each time step. This is easily done with the `repeat_targets` argument as follow :
+For this task, the goal is to predict the speaker for each time step of each utterance. The first step is to get the data where the label is repeated for each time step. This is easily done with the `repeat_targets` argument as follow:
 
 ```{r}
 # For this new task where we want to forecast for each time step (instead of each utterance)
@@ -785,7 +792,7 @@ ggplot(dfplotseqtoseq, mapping = aes(x = Time,
        fill = "Prediction score")
 ```
 
-For those 6 utterances, the model correctly identify the speaker for most of the time steps. We can then evaluate the overall accuracy of the model :
+For those 6 utterances, the model correctly identify the speaker for most of the time steps. We can then evaluate the overall accuracy of the model:
 
 ```{r}
 # Compute the accuracy
@@ -832,10 +839,10 @@ The dataset was separated into two periods. First period from May 16, 2020 to Ma
 
 The performance of the model was evaluated according to several metrics:
 
-- the mean absolute error : $\text{MAE} = \frac{1}{T} \sum_{t=1}^{T} \left| \hat{hosp}_{t+14} - hosp_{t+14} \right|$.
-- the median relative error : $\text{MRE} = \text{median} \left( \left| \frac{\hat{hosp}_{t+14} - hosp_{t+14}}{hosp_{t+14}} \right| \right)$.
-- the mean absolute error to baseline : $\text{MAEB} = \frac{1}{T} \sum_{t=1}^{T} \left( \left| \hat{hosp}_{t+14} - hosp_{t+14} \right| - \left| hosp_{t} - hosp_{t+14} \right| \right)$.
-- the median relative error to baseline : $\text{MREB} = \text{median} \left( \left| \frac{\hat{hosp}_{t+14} - hosp_{t+14}}{hosp_{t} - hosp_{t+14}} \right| \right)$)
+- the mean absolute error: $\text{MAE} = \frac{1}{T} \sum_{t=1}^{T} \left| \hat{hosp}_{t+14} - hosp_{t+14} \right|$.
+- the median relative error: $\text{MRE} = \text{median} \left( \left| \frac{\hat{hosp}_{t+14} - hosp_{t+14}}{hosp_{t+14}} \right| \right)$.
+- the mean absolute error to baseline: $\text{MAEB} = \frac{1}{T} \sum_{t=1}^{T} \left( \left| \hat{hosp}_{t+14} - hosp_{t+14} \right| - \left| hosp_{t} - hosp_{t+14} \right| \right)$.
+- the median relative error to baseline: $\text{MREB} = \text{median} \left( \left| \frac{\hat{hosp}_{t+14} - hosp_{t+14}}{hosp_{t} - hosp_{t+14}} \right| \right)$)
 
 Median was chosen over mean for $MRE$ and $MREB$ because those metrics tend to have extremely high values when the denominator is close to 0 (i.e when the number of hospitalized patients is close to 0 or the number of patients hospitalized at 14 days is close to the current number of hospitalized patients respectively). $MAEB$ and $MREB$ compare model performance to a baseline model which predicts the current number of hospitalized patients at 14 days. Those metrics help to determine the information added by the model and is a good baseline as covid-19 forecast model do not always outperform this basic forecast (@cramer_evaluation_2022-1).
 
@@ -843,7 +850,7 @@ Because the outcome is obfuscated below 10 hospitalizations for privacy reason, 
 
 ### Models
 
-We compared RC to elastic-net penalized regression (denoted as Enet). Furthermore we evaluated RC based on several architectures. First we compared RC with a single input scaling common to all features and a RC with a specific input scaling per feature. Second we compared RC where the input layer is connected to the output layer in addition to the connection between reservoir and output layer. Therefore, five models were evaluated :
+We compared RC to elastic-net penalized regression (denoted as Enet). Furthermore we evaluated RC based on several architectures. First we compared RC with a single input scaling common to all features and a RC with a specific input scaling per feature. Second we compared RC where the input layer is connected to the output layer in addition to the connection between reservoir and output layer. Therefore, five models were evaluated:
 
 - Elastic-net penalized regression denoted *Enet*
 - RC with a single input scaling and no connection between input and ouput layers denoted *Common IS R %>>% O*
@@ -859,12 +866,12 @@ RC relies mainly on 4 hyperparameters including the leaking rate (i.e "memory" p
 
 Following the notation from `glmnet` package [@friedman_regularization_2010], elastic-net penalized linear regression relies on two hyperparameters, lambda (i.e the penalization parameter) and alpha (i.e the compromise between lasso and ridge penalty)
 
-Hyperparameter were selected in the training set (i.e before March 1, 2021) using a wrapper approach and a random search sampler using 2000 samples for each model. The sampling distribution were defined as follow :
+Hyperparameter were selected in the training set (i.e before March 1, 2021) using a wrapper approach and a random search sampler using 2000 samples for each model. The sampling distribution were defined as follow:
 
-- (RC) ridge and (Enet) lambda : log-uniform law defined between 1e-10 and 1e5
-- (RC) input scaling and spectral radius : log-uniform law defined between 1e-5 and 1e5
-- (RC) leaking rate : log-uniform law defined between 1e-3 and 1
-- (Enet) alpha : uniform defined between 0 and 1
+- (RC) ridge and (Enet) lambda: log-uniform law defined between 1e-10 and 1e5
+- (RC) input scaling and spectral radius: log-uniform law defined between 1e-5 and 1e5
+- (RC) leaking rate: log-uniform law defined between 1e-3 and 1
+- (Enet) alpha: uniform defined between 0 and 1
 
 We provided large search space for all hyper-parameters. Search space was slightly reduced for leaking rate based on previous results and because a leaking rate of 1e-3 already imply that new inputs make the reservoir change really slowly which is not inline with the dynamic of covid-19 but would be appropriate for an application where the phenomena to forecast has a slow dynamic.
 
@@ -916,7 +923,7 @@ ls_use_case$plot_feature_input_scaling
 
 ```{r performance, echo = FALSE}
 #| label: tbl-performance
-#| tbl-cap: "Model performance with several reservoir configuration. For each setting, 40 reservoirs are computed and the forecast is the median of the 40 forecasts. Results show the performance metrics : MAE = Mean Absolute Error, MRE = Median Relative Error, MAEB = Mean Absolute Error to Baseline, MREB = Median Relative Error to Baseline."
+#| tbl-cap: "Model performance with several reservoir configuration. For each setting, 40 reservoirs are computed and the forecast is the median of the 40 forecasts. Results show the performance metrics: MAE = Mean Absolute Error, MRE = Median Relative Error, MAEB = Mean Absolute Error to Baseline, MREB = Median Relative Error to Baseline."
 # performance of the different model
 ls_use_case$table_perf_esn %>%
   dplyr::mutate(model = gsub(model,
