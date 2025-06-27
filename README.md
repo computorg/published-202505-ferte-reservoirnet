@@ -2,7 +2,7 @@
 # Reservoir Computing in R: a Tutorial for Using reservoirnet to Predict Complex Time-Series
 
 [![build and publish](https://github.com/computorg/published-202505-ferte-reservoirnet/actions/workflows/build.yml/badge.svg)](https://github.com/computorg/published-202505-ferte-reservoirnet/actions/workflows/build.yml)
-[![DOI:10.57750/arxn-6z34](https://img.shields.io/badge/DOI-10.57750/xxxx--xxxx-034E79.svg)](https://doi.org/10.57750/arxn-6z34)
+[![DOI:10.57750/arxn-6z34](https://img.shields.io/badge/DOI-10.57750/arxn--6z34-034E79.svg)](https://doi.org/10.57750/arxn-6z34)
 [![reviews](https://img.shields.io/badge/review-report-blue)](https://github.com/computorg/published-202505-ferte-reservoirnet/issues?q=is%3Aopen+is%3Aissue+label%3Areview)
 [![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/computorg/published-202505-ferte-reservoirnet/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/computorg/published-202505-ferte-reservoirnet)
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
