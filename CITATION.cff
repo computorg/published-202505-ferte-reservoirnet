@@ -1,0 +1,105 @@
+cff-version: 1.2.0
+message: If you use or cite this article, please use the metadata provided in 'preferred-citation'.
+title: 'Reservoir Computing in R: a Tutorial for Using reservoirnet to Predict Complex
+  Time-Series'
+authors:
+- family-names: Ferté
+  given-names: Thomas
+  orcid: https://orcid.org/0000-0001-8455-4665
+  affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+    Bordeaux, France; CHU de Bordeaux, Bordeaux Hospital University Center, Pôle de
+    santé publique, Service d'information médicale, F-33000 Bordeaux, France
+- family-names: Ba
+  given-names: Kalidou
+  orcid: https://orcid.org/0000-0001-6552-265X
+  affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+    Bordeaux, France
+- family-names: Dutartre
+  given-names: Dan
+  orcid: https://orcid.org/0000-0001-8210-461X
+  affiliation: Inria, INRIA, F-33000 Bordeaux, France
+- family-names: Legrand
+  given-names: Pierrick
+  affiliation: Bordeaux INP, ENSC, 109 avenue Roul, 33400, Talence France; Inria,
+    INRIA, F-33000 Bordeaux, France; IMS, IMS, UMR CNRS 5218
+- family-names: Jouhet
+  given-names: Vianney
+  orcid: https://orcid.org/0000-0001-5272-2265
+  affiliation: Inserm, Inserm Bordeaux Population Health Research Center UMR 1219,
+    team AHeaD, F-33000 Bordeaux; CHU de Bordeaux, Bordeaux Hospital University Center,
+    Pôle de santé publique, Service d'information médicale, F-33000 Bordeaux, France
+- family-names: Thiébaut
+  given-names: Rodolphe
+  orcid: https://orcid.org/0000-0002-5235-3962
+  affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA, BPH, U1219, F-33000 Bordeaux,
+    France; CHU de Bordeaux, Bordeaux Hospital University Center, Pôle de santé publique,
+    Service d'information médicale, F-33000 Bordeaux, France
+- family-names: Hinaut
+  given-names: Xavier
+  orcid: https://orcid.org/0000-0002-1924-1184
+  affiliation: Inria, INRIA, F-33000 Bordeaux, France; IMN, Univ. Bordeaux, CNRS,
+    IMN, UMR 5293, Bordeaux, France; LaBRI, LaBRI, Univ. Bordeaux, Bordeaux INP, CNRS
+    UMR 5800.
+- family-names: Hejblum
+  given-names: Boris P
+  orcid: https://orcid.org/0000-0003-0646-452X
+  affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+    Bordeaux, France
+url: https://computo-journal.org/published-202505-ferte-reservoirnet/
+preferred-citation:
+  type: article
+  title: 'Reservoir Computing in R: a Tutorial for Using reservoirnet to Predict Complex
+    Time-Series'
+  authors:
+  - family-names: Ferté
+    given-names: Thomas
+    orcid: https://orcid.org/0000-0001-8455-4665
+    affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+      Bordeaux, France; CHU de Bordeaux, Bordeaux Hospital University Center, Pôle
+      de santé publique, Service d'information médicale, F-33000 Bordeaux, France
+  - family-names: Ba
+    given-names: Kalidou
+    orcid: https://orcid.org/0000-0001-6552-265X
+    affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+      Bordeaux, France
+  - family-names: Dutartre
+    given-names: Dan
+    orcid: https://orcid.org/0000-0001-8210-461X
+    affiliation: Inria, INRIA, F-33000 Bordeaux, France
+  - family-names: Legrand
+    given-names: Pierrick
+    affiliation: Bordeaux INP, ENSC, 109 avenue Roul, 33400, Talence France; Inria,
+      INRIA, F-33000 Bordeaux, France; IMS, IMS, UMR CNRS 5218
+  - family-names: Jouhet
+    given-names: Vianney
+    orcid: https://orcid.org/0000-0001-5272-2265
+    affiliation: Inserm, Inserm Bordeaux Population Health Research Center UMR 1219,
+      team AHeaD, F-33000 Bordeaux; CHU de Bordeaux, Bordeaux Hospital University
+      Center, Pôle de santé publique, Service d'information médicale, F-33000 Bordeaux,
+      France
+  - family-names: Thiébaut
+    given-names: Rodolphe
+    orcid: https://orcid.org/0000-0002-5235-3962
+    affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA, BPH, U1219, F-33000
+      Bordeaux, France; CHU de Bordeaux, Bordeaux Hospital University Center, Pôle
+      de santé publique, Service d'information médicale, F-33000 Bordeaux, France
+  - family-names: Hinaut
+    given-names: Xavier
+    orcid: https://orcid.org/0000-0002-1924-1184
+    affiliation: Inria, INRIA, F-33000 Bordeaux, France; IMN, Univ. Bordeaux, CNRS,
+      IMN, UMR 5293, Bordeaux, France; LaBRI, LaBRI, Univ. Bordeaux, Bordeaux INP,
+      CNRS UMR 5800.
+  - family-names: Hejblum
+    given-names: Boris P
+    orcid: https://orcid.org/0000-0003-0646-452X
+    affiliation: Inserm, Inria, Univ. Bordeaux, INSERM, INRIA SISTM, BPH, U1219, F-33000
+      Bordeaux, France
+  journal: Computo
+  issn: 2824-7795
+  url: https://computo-journal.org/published-202505-ferte-reservoirnet/
+  publisher:
+    name: French Statistical Society
+  doi: 10.57750/arxn-6z34
+  year: 2025
+doi: 10.57750/arxn-6z34
+date-released: '2025-05-01'
