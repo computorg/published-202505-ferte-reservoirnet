@@ -80,6 +80,7 @@ citation:
   issn: "2824-7795"
   url: "https://computo-journal.org/published-202505-ferte-reservoirnet/"
   issued: "2025-06-27"
+google-scholar: true
 related-identifiers:
   - relation: IsVersionOf
     type: URL
