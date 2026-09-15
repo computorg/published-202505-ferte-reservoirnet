@@ -88,3 +88,11 @@ related-identifiers:
     identifier: "https://hal.science/hal-05208084v1"
 github-user: computorg
 repo: "published-202505-ferte-reservoirnet"
+date-modified: last-modified
+keywords: [Reservoir Computing, Covid-19, Electronic Health Records, Time series]
+bibliography: references.bib
+format:
+  computo-html: default
+  computo-pdf: 
+    echo: true
+    tidy: styler
